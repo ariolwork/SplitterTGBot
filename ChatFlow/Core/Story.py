@@ -50,7 +50,7 @@ class Story:
 
     def StartStory(self):
         self.CurrentStep = self.StorySteps[0]
-        return self.StartStoryMessage
+        return f"{self.StartStoryMessage}\n<c> to cancel"
 
     def ProcessMessage(self, message):
         result = ""

@@ -1,6 +1,6 @@
 FROM python:latest
 WORKDIR /code
-ENV DB="localhost:27017"
+ENV DB="localhost:8010"
 ENV TG="none"
 COPY . .
 RUN pip install -r requirements.txt
