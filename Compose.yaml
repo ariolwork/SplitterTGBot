@@ -1,0 +1,29 @@
+version: '1'
+
+services:
+  tg_bot:
+    build: .
+    ports:
+      - 8081:8081
+    environment:
+      DB: mongo:27017
+      TG: ${TG}
+    depends_on:
+      mongo:
+        condition: service_started
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - 8010:27017
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
+
+
+#How to backup
+#docker-compose exec -T mongo mongodump --archive --gzip --db salary_split > dump.gz
+#How to restore
+#docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
